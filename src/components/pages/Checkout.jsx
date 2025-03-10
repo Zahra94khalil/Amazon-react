@@ -59,7 +59,7 @@ const Checkout = () => {
                           <input type='checkbox' />
                           <p>This will be a gift</p>
                           <a
-                            href=''
+                            href='#'
                             className='text-[#007185] hover:text-red-600'
                           >
                             Learn more

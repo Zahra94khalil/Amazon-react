@@ -15,19 +15,20 @@ const ProductPage = () => {
     const dispatch = useDispatch(); 
 
     const cart = useSelector(state => state.cart);
-    const isInCart = cart.products.some(item => item.id === product?.id);
+    const isInCart = product && cart.products.some(item => item.id === product.id);
 
     const getProduct = async () => {
         try {
-            const productResults = await fetchLocalData ('data/products.json');
-            setProduct(productResults[id]); 
+            const productResults = await fetchLocalData('data/products.json');
+            const productData = productResults.find(p => p.id === Number(id)); 
+            setProduct(productData); 
         } catch (error) {
             console.error("Error fetching product:", error);
         }
     };
-
+    
     useEffect(() => {
-        getProduct(); 
+        getProduct();
     }, [id]);
 
     const handleCartAction = () => {
